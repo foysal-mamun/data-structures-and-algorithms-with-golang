@@ -65,3 +65,10 @@ func TestGcd(t *testing.T) {
 		t.Errorf("Expected: 6; Got: ", d)
 	}
 }
+
+func TestPrimes(t *testing.T) {
+	p := Primes(3)
+	if p[2] != 5 {
+		t.Error("Expected: 2; Got: ", p[0])
+	}
+}

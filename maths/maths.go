@@ -134,3 +134,39 @@ func Gcd(x, y int) int {
 	}
 	return x
 }
+
+// A Prime number is a whole number greater than 1, whose only two whole-number factors are 1 and itself.
+// So Prime number can be divided by evenly only by 1, or itself, and it must be a whole number greater than 1.
+// 2, 3, 5, 7, 11, 13 , 17, 19 ...
+// The sieve of Eratosthenes way is use here to find prime numbers
+// And Daisy - chain concurrency pattern used here
+// return a list of nth position primes
+func Primes(n int) []int {
+	primes := make([]int, n)
+
+	generate := func(ch chan<- int) {
+		for i := 2; ; i++ {
+			ch <- i
+		}
+	}
+
+	filter := func(in <-chan int, out chan<- int, prime int) {
+		for {
+			i := <-in
+			if i%prime != 0 {
+				out <- i
+			}
+		}
+	}
+
+	prev := make(chan int)
+	go generate(prev)
+	for i := 0; i < n; i++ {
+		primes[i] = <-prev
+		next := make(chan int)
+		go filter(prev, next, primes[i])
+		prev = next
+	}
+
+	return primes
+}
