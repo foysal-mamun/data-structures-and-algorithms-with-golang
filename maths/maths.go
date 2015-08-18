@@ -170,3 +170,22 @@ func Primes(n int) []int {
 
 	return primes
 }
+
+// return all prime factors of a number n
+// f = p1 * p2 * p3 * ... where n > 1 and p1 <= p2 <= pc <= ...
+// 60 = 2 * 2 * 3 * 5
+func PrimeFactors(n int) []int {
+
+	factors := []int{}
+	primes := Primes(int(SquareRoot(float64(n))))
+
+	for _, prime := range primes {
+
+		for n%prime == 0 {
+			n = n / prime
+			factors = append(factors, prime)
+		}
+	}
+
+	return factors
+}
