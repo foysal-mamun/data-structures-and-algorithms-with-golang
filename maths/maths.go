@@ -96,7 +96,7 @@ func CharacterToNumber(s string) (dec int) {
 }
 
 // square root of n
-// x = x - ( x * (x-n) ) / 2x
+// x = x - ( x*x-n ) / 2x; initial x=2.0
 func SquareRoot(n float64) float64 {
 	err := 0.0000001
 	x, y := 2., 0.
@@ -188,4 +188,15 @@ func PrimeFactors(n int) []int {
 	}
 
 	return factors
+}
+
+func RandomUsingLinearCongruential(x int) int {
+	a := 1103515245 //109
+	b := 12345      //853
+	m := 123456     //4096
+
+	if x >= 0 && x <= m-1 {
+		x = (a*x + b) % m
+	}
+	return x
 }

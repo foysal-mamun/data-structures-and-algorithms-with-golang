@@ -69,13 +69,19 @@ func TestGcd(t *testing.T) {
 func TestPrimes(t *testing.T) {
 	p := Primes(3)
 	if p[2] != 5 {
-		t.Error("Expected: 2; Got: ", p[0])
+		t.Errorf("Expected: 2; Got: ", p[0])
 	}
 }
 
 func TestPrimeFactors(t *testing.T) {
 	f := PrimeFactors(60)
 	if f[3] != 5 || f[2] != 3 || f[1] != 2 || f[0] != 2 {
-		t.Error("Expected: [2 2 3 5]; Got: ", f)
+		t.Errorf("Expected: [2 2 3 5]; Got: ", f)
 	}
+}
+
+func TestRandomUsingLinearCongruential(t *testing.T) {
+
+	r := RandomUsingLinearCongruential(1)
+	t.Errorf("Expected: [2 2 3 5]; Got: ", r)
 }
