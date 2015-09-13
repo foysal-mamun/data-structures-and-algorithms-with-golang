@@ -13,3 +13,16 @@ func TestConnected(t *testing.T) {
 		t.Errorf("Expected: true; but got %t", con)
 	}
 }
+
+func BenchmarkUnion(b *testing.B) {
+	id := make([]int, 100000000)
+	for i, v := range id {
+		id[i] = v
+	}
+	qf := quickfind{id}
+	for _, v := range id[:9] {
+		if v%2 == 0 {
+			qf.Union(v, v+1)
+		}
+	}
+}
