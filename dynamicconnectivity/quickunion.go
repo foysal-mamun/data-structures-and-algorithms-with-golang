@@ -18,5 +18,11 @@ func (qu *quickunion) Connected(p, q int) bool {
 
 func (qu *quickunion) Union(p, q int) {
 
-	qu.id[qu.root(p)] = qu.root(q)
+	rp := w.Root(p)
+	rq := w.Root(q)
+
+	if rp == rq {
+		return
+	}
+	qu.id[rp] = rq
 }
