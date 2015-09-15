@@ -15,7 +15,7 @@ func (w *wqupc) Root(i int) int {
 }
 
 func (w *wqupc) Connected(p, q int) bool {
-	return w.id[p] == w.id[q]
+	return w.Root(p) == w.Root(q)
 }
 
 func (w *wqupc) Union(p, q int) {

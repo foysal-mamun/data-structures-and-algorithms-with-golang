@@ -15,10 +15,7 @@ func (w *wquickunion) Root(i int) int {
 }
 
 func (w *wquickunion) Connected(p, q int) bool {
-	if w.Root(p) == w.Root(q) {
-		return true
-	}
-	return false
+	return w.Root(p) == w.Root(q)
 }
 
 func (w *wquickunion) Union(p, q int) {
