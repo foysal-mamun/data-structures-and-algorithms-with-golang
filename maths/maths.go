@@ -190,6 +190,7 @@ func PrimeFactors(n int) []int {
 	return factors
 }
 
+// Generate Random number using Linear Congruential
 func RandomUsingLinearCongruential(x int) int {
 	a := 1103515245 //109
 	b := 12345      //853
