@@ -9,6 +9,7 @@ type threesum struct {
 }
 
 // 3 sum using 2 sum to make it O(n^2)
+// // this given wrong result
 func (ts *threesum) SumByTwoSum() map[int]int {
 
 	output := make(map[int]int)
@@ -16,7 +17,7 @@ func (ts *threesum) SumByTwoSum() map[int]int {
 	twoSum := make(map[int]int)
 	N := len(ts.nums)
 	for i := 0; i < N; i += 1 {
-		for j := i; j < N; j += 1 {
+		for j := i + 1; j < N; j += 1 {
 			twoSum[ts.nums[i]+ts.nums[j]] = ts.nums[j]
 		}
 	}
@@ -45,12 +46,12 @@ func (ts *threesum) PrintAllThreeSum() {
 	}
 }
 
-func (ts *threesum) TriplesCount() {
+func (ts *threesum) TriplesCount() int {
 	cnt := 0
 	N := len(ts.nums)
 	for i := 0; i < N; i += 1 {
-		for j := i; j < N; j += 1 {
-			for k := j; k < N; k += 1 {
+		for j := i; j+1 < N; j += 1 {
+			for k := j + 1; k < N; k += 1 {
 				if ts.nums[i]+ts.nums[j]+ts.nums[k] == 0 {
 					cnt += 1
 				}
@@ -58,5 +59,20 @@ func (ts *threesum) TriplesCount() {
 		}
 	}
 
-	fmt.Println("triples Count:: ", cnt)
+	return cnt
+}
+
+func (ts *threesum) TwoSum() int {
+	N := len(ts.nums)
+	cnt := 0
+
+	for i := 0; i < N; i += 1 {
+		for j := i + 1; j < N; j += 1 {
+			if ts.nums[i]+ts.nums[j] == 0 {
+				cnt++
+			}
+		}
+	}
+
+	return cnt
 }
