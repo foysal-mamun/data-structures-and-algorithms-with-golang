@@ -1,5 +1,9 @@
 package search
 
+import (
+//"fmt"
+)
+
 type binary struct {
 	a []int
 	x int
@@ -12,14 +16,14 @@ func (b *binary) Recursive(min, max int) int {
 	}
 
 	mid := min + (max-min)/2
-
 	if b.a[mid] > b.x {
 		return b.Recursive(min, mid-1)
-	} else if b.a[min] < b.x {
+	} else if b.a[mid] < b.x {
 		return b.Recursive(mid+1, max)
 	} else {
-		return min
+		return mid
 	}
+
 }
 
 func (b *binary) Iterative(min, max int) int {
@@ -42,7 +46,7 @@ func (b *binary) Iterative(min, max int) int {
 }
 
 // return index where to insert
-func (b *binary) InsertionSort(min, max int, f func(int) bool) int {
+func (b *binary) SearchForInsertion(min, max int, f func(int) bool) int {
 
 	for min < max {
 		mid := min + (max-min)/2
@@ -55,3 +59,20 @@ func (b *binary) InsertionSort(min, max int, f func(int) bool) int {
 
 	return min
 }
+
+// // return index where to insert by recursive
+// func (b *binary) Recursive(min, max int) int {
+
+// 	if min >= max {
+// 		return min
+// 	}
+
+// 	mid := min + (max-min)/2
+// 	if b.a[mid] >= b.x {
+// 		return b.Recursive(min, mid)
+// 	} else if b.a[mid] < b.x {
+// 		return b.Recursive(mid+1, max)
+// 	}
+
+// 	return min
+// }

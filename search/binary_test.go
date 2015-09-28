@@ -10,26 +10,26 @@ var nums = []int{
 
 func TestBinaryRecursive(t *testing.T) {
 
-	b := binary{nums, 8}
+	b := binary{nums, 6}
 	key := b.Recursive(0, len(b.a)-1)
-	if key != 6 {
-		t.Errorf("Expected: 6; but got %d", key)
+	if key != 4 {
+		t.Errorf("Expected: 4; but got %d", key)
 	}
 }
 
 func TestBinaryIterative(t *testing.T) {
 
-	b := binary{nums, 5}
+	b := binary{nums, 2}
 	key := b.Iterative(0, len(b.a)-1)
-	if key != 3 {
-		t.Errorf("Expected: 3; but got %d", key)
+	if key != 1 {
+		t.Errorf("Expected: 1; but got %d", key)
 	}
 }
 
-func TestBinaryForInsertionSort(t *testing.T) {
+func TestBinarySearchForInsertion(t *testing.T) {
 
 	b := binary{nums, 6}
-	key := b.GoWay(0, len(b.a)-1, func(i int) bool { return b.a[i] >= b.x })
+	key := b.SearchForInsertion(0, len(b.a)-1, func(i int) bool { return b.a[i] >= b.x })
 	if key != 4 {
 		t.Errorf("Expected: 4; but got %d", key)
 	}
