@@ -108,6 +108,31 @@ var nums = []int{
 	-969984, 135509, -38790, 634449, -175472, -282890, -879920, -558505, 999372, 916031, 158641, 949397, 388158, 273789, 235287, -620373, -855640, 492487, -480968, -598151,
 }
 
+func TestTwoSumCount(t *testing.T) {
+	ts := twosum{nums}
+	cnt := ts.Count()
+	if cnt != 2 {
+		t.Errorf("Expected: 2; but got %d", cnt)
+	}
+}
+func BenchmarkTwoSumCount(b *testing.B) {
+	ts := twosum{nums}
+	ts.Count()
+}
+
+func TestTwoSumCountFast(t *testing.T) {
+	ts := twosum{nums}
+	//ts := twosum{[]int{1, -1}}
+	cnt := ts.CountFast()
+	if cnt != 2 {
+		t.Errorf("Expected: 2; but got %d", cnt)
+	}
+}
+func BenchmarkTwoSumCountFast(b *testing.B) {
+	ts := twosum{nums}
+	ts.CountFast()
+}
+
 // func TestSumByTwoSum(t *testing.T) {
 // 	ts := threesum{nums}
 // 	nums := ts.SumByTwoSum()
@@ -136,14 +161,26 @@ func TestTriplesCount(t *testing.T) {
 		t.Errorf("Expected: 529; but got %d", cnt)
 	}
 }
-
 func BenchmarkTriplesCount(b *testing.B) {
 
 	ts := threesum{nums}
 	ts.TriplesCount()
 }
 
-func TestTwoSum(t *testing.T) {
+func TestTriplesCountFast(t *testing.T) {
+	//ts := threesum{[]int{30, -40, -20, -10, 40, 0, 10, 5}}
+	ts := threesum{nums}
+	cnt := ts.TriplesCountFast()
+	if cnt != 529 {
+		t.Errorf("Expected: 529; but got %d", cnt)
+	}
+}
+func BenchmarkTriplesCountFast(b *testing.B) {
+	ts := threesum{nums}
+	ts.TriplesCountFast()
+}
+
+func TestTSTwoSum(t *testing.T) {
 	ts := threesum{nums}
 	cnt := ts.TwoSum()
 	if cnt != 2 {
@@ -151,8 +188,7 @@ func TestTwoSum(t *testing.T) {
 	}
 }
 
-func BenchmarkTwoSum(b *testing.B) {
-
+func BenchmarkTSTwoSum(b *testing.B) {
 	ts := threesum{nums}
 	ts.TwoSum()
 }
