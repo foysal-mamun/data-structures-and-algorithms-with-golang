@@ -4,21 +4,21 @@ import (
 //"fmt"
 )
 
-type binary struct {
-	a []int
-	x int
+type Binary struct {
+	A []int
+	X int
 }
 
-func (b *binary) Recursive(min, max int) int {
+func (b *Binary) Recursive(min, max int) int {
 
 	if max < min {
 		return -1
 	}
 
 	mid := min + (max-min)/2
-	if b.a[mid] > b.x {
+	if b.A[mid] > b.X {
 		return b.Recursive(min, mid-1)
-	} else if b.a[mid] < b.x {
+	} else if b.A[mid] < b.X {
 		return b.Recursive(mid+1, max)
 	} else {
 		return mid
@@ -26,16 +26,16 @@ func (b *binary) Recursive(min, max int) int {
 
 }
 
-func (b *binary) Iterative(min, max int) int {
+func (b *Binary) Iterative(min, max int) int {
 
 	for min <= max {
 
 		mid := min + (max-min)/2
-		if b.a[mid] == b.x {
+		if b.A[mid] == b.X {
 			return mid
 		}
 
-		if b.a[mid] < b.x {
+		if b.A[mid] < b.X {
 			min = mid + 1
 		} else {
 			max = mid - 1
@@ -46,7 +46,7 @@ func (b *binary) Iterative(min, max int) int {
 }
 
 // return index where to insert
-func (b *binary) SearchForInsertion(min, max int, f func(int) bool) int {
+func (b *Binary) SearchForInsertion(min, max int, f func(int) bool) int {
 
 	for min < max {
 		mid := min + (max-min)/2
@@ -61,16 +61,16 @@ func (b *binary) SearchForInsertion(min, max int, f func(int) bool) int {
 }
 
 // // return index where to insert by recursive
-// func (b *binary) Recursive(min, max int) int {
+// func (b *Binary) Recursive(min, max int) int {
 
 // 	if min >= max {
 // 		return min
 // 	}
 
 // 	mid := min + (max-min)/2
-// 	if b.a[mid] >= b.x {
+// 	if b.A[mid] >= b.X {
 // 		return b.Recursive(min, mid)
-// 	} else if b.a[mid] < b.x {
+// 	} else if b.A[mid] < b.X {
 // 		return b.Recursive(mid+1, max)
 // 	}
 
