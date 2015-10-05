@@ -1,7 +1,6 @@
 package stacks
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -50,17 +49,5 @@ func TestListPop(t *testing.T) {
 	}
 	if v != 1 {
 		t.Errorf("Expected: 1; but got %d; len %d", v, l.Len())
-	}
-}
-
-func TestListIterator(t *testing.T) {
-	l := NewList()
-	l.Push(1)
-	l.Push(2)
-	l.Push(3)
-	l.Push(4)
-
-	for l.HasNext() {
-		fmt.Println(l.Next().Value)
 	}
 }
