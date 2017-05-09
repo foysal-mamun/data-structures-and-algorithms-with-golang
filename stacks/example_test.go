@@ -27,3 +27,13 @@ func ExampleList() {
 	// is
 	// to
 }
+
+func ExampleStack() {
+	s := stacks.NewStack()
+	s.Push(1)
+
+	fmt.Println(s.IsEmpty())
+
+	// Output:
+	// true
+}
